@@ -1,30 +1,35 @@
-/**
+function MyLodash() {
+  /**
  * Shallow copy object
  * 
  * @param {*} obj 
  * @returns shallowed copy object
  */
-const shallowCopy = (obj) => {
-  let result = obj;
-  if (typeof obj === 'object' || obj !== null) {
-    result = {...obj};
-  }
-  return result;
-};
+  this.shallowCopy = function(obj) {
+    let result = obj;
+    if (typeof obj === 'object' || obj !== null) {
+      result = {...obj};
+    }
+    return result;
+  };
 
-/**
- * Deep copy object
- * 
- * @param {*} obj 
- * @returns deep copied object
- */
-const deepCopy = (obj) => {
-  let result = obj;
-  if (typeof obj === 'object' || obj !== null) {
-    result = recursiveShallowCopy(obj);
-  }
-  return result;
-};
+  /**
+   * Deep copy object
+   * 
+   * @param {*} obj 
+   * @returns deep copied object
+   */
+  this.deepCopy = function(obj) {
+    let result = obj;
+    if (typeof obj === 'object' || obj !== null) {
+      result = recursiveShallowCopy(obj);
+    }
+    return result;
+  };
+}
+
+const myLodash = new MyLodash();
+export default myLodash;
 
 /**
  * Helper method for deep copy
