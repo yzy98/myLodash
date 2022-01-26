@@ -26,6 +26,16 @@ function MyLodash() {
     }
     return result;
   };
+
+  /**
+   * check all data types
+   * 
+   * @param {*} obj 
+   * @returns data type (including null, array...)
+   */
+  this.typeOf = function(obj) {
+    return Object.prototype.toString.call(obj).slice(8, -1).toLowerCase();
+  }
 }
 
 const myLodash = new MyLodash();
