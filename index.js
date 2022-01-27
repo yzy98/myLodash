@@ -50,6 +50,26 @@ function MyLodash() {
       .map((word, index) => index == 0 ? word : word[0].toUpperCase() + word.slice(1))
       .join('');
   }
+
+  /**
+   * ascend sort number array
+   * 
+   * @param {array} arr number array
+   * @returns ascending array
+   */
+  this.ascendSort = function(arr) {
+    return arr.sort((a, b) => a - b);
+  }
+
+  /**
+   * descend sort number array
+   * 
+   * @param {array} arr number array
+   * @returns descending array
+   */
+  this.descendSort = function(arr) {
+    return arr.sort((a, b) => b - a);
+  }
 }
 
 const myLodash = new MyLodash();
