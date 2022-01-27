@@ -36,6 +36,20 @@ function MyLodash() {
   this.typeOf = function(obj) {
     return Object.prototype.toString.call(obj).slice(8, -1).toLowerCase();
   }
+
+  /**
+   * camelize string
+   * 
+   * @param {string} str target string
+   * @param {string} interval e.g. '-', '_'
+   * @returns camelized string
+   */
+  this.camelize = function(str, interval) {
+    return str
+      .split(interval)
+      .map((word, index) => index == 0 ? word : word[0].toUpperCase() + word.slice(1))
+      .join('');
+  }
 }
 
 const myLodash = new MyLodash();
