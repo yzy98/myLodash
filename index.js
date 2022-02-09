@@ -76,9 +76,9 @@ function MyLodash() {
    * 
    * @param {*} arr 
    * @param {*} target 
-   * @param {*} start 
-   * @param {*} end 
-   * @returns index of target in the arr, not found them return -1
+   * @param {number} start start index
+   * @param {number} end end index
+   * @returns index of target in the arr, not found then return -1
    */
   this.binarySearch = function(arr, target, start, end = arr.length - 1) {
     const mid = Math.floor((start + end) / 2);
@@ -102,6 +102,7 @@ function MyLodash() {
    * @param {*} arr 
    * @returns array of permutations
    */
+  // [0, 1] => [[0,1], [1,0]]
   this.getPermutations = function(arr) {
     let permArr = [],
         usedChars = [];
