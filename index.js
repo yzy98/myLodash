@@ -70,6 +70,32 @@ function MyLodash() {
   this.descendSort = function(arr) {
     return arr.sort((a, b) => b - a);
   }
+
+  /**
+   * binary search
+   * 
+   * @param {*} arr 
+   * @param {*} target 
+   * @param {*} start 
+   * @param {*} end 
+   * @returns index of target in the arr, not found them return -1
+   */
+  this.binarySearch = function(arr, target, start, end = arr.length - 1) {
+    const mid = Math.floor((start + end) / 2);
+
+    if (target == arr[mid]) {
+      return mid;
+    }
+
+    if (start >= end) {
+      return -1;
+    }
+
+    return target < arr[mid]
+      ? this.binarySearch(arr, target, start, mid - 1)
+      : this.binarySearch(arr, target, mid + 1, end);
+  }
+
   /**
    * get permutations of provided array
    * 
