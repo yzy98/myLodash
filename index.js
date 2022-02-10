@@ -99,7 +99,7 @@ function MyLodash() {
   /**
    * get permutations of provided array
    * 
-   * @param {*} arr 
+   * @param {array} arr 
    * @returns array of permutations
    */
   // [0, 1] => [[0,1], [1,0]]
@@ -123,6 +123,26 @@ function MyLodash() {
     };
 
     return permute(arr);
+  }
+
+  /**
+   * check if given array is palindrome
+   * 
+   * @param {array} arr given array
+   * @param {number} start start index of array
+   * @param {number} end end index of array
+   * @returns {boolean}
+   */
+  this.isArrayPalindrome = function(arr, start = 0, end = arr.length - 1) {
+    if (start >= end) {
+      return true;
+    }
+
+    if (arr[start] == arr[end]) {
+      return this.isArrayPalindrome(arr, start + 1, end - 1);
+    } else {
+      return false;
+    }
   }
 }
 
