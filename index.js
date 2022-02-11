@@ -144,6 +144,60 @@ function MyLodash() {
       return false;
     }
   }
+
+  /**
+   * Definition of singly-linked list
+   * 
+   * function ListNode(val, next) {
+   *    this.val = (val === undefined ? 0 : val)
+   *    this.next = (next === undefined ? null : next)
+   * }
+   * 
+   * get reversed singly-linked list
+   * 
+   * @param {ListNode} head 
+   * @returns {ListNode} reversed singly-linked list head node
+   */
+  this.reverseSinglyLinkedList = function(head) {
+    let cur = head,
+        prev = null,
+        next = null;
+    
+    while (cur !== null) {
+      next = cur.next;
+      cur.next = prev;
+      prev = cur;
+      cur = next;
+    }
+
+    return cur;
+  }
+
+  /**
+   * split singly-linked list into half
+   * 
+   * @param {ListNode} head 
+   * @returns {ListNode} second half of given singly-linked list
+   * e.g. [1,2,3,4,5] => [1,2,3], return [4,5]
+   */
+  this.splitHalfSinglyLinkedList = function(head) {
+    let slow, fast = head;
+
+    while (fast !== null) {
+      // fast node moves forward twice than slow node, this is the KEY!!!
+      if (fast.next !== null && fast.next.next !== null) {
+        slow = slow.next;
+        fast = fast.next.next;
+      } else {
+        fast = null;
+      }
+    }
+
+    const secondHalf = slow.next;
+    slow.next = null;
+
+    return secondHalf;
+  }
 }
 
 const myLodash = new MyLodash();
