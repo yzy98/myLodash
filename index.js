@@ -198,6 +198,51 @@ function MyLodash() {
 
     return secondHalf;
   }
+
+  /**
+   * debounce
+   * @param {Function} fn 
+   * @param {Number} delay 
+   * @returns {Function}
+   */
+  this.debounce = function(fn, delay) {
+    let timer = null;
+
+    return function() {
+      const context = this;
+      const args = arguments;
+
+      if (timer) {
+        clearTimeout(timer);
+      }
+
+      timer = setTimeout(() => {
+        fn.apply(context, args);
+      }, delay);
+    }
+  };
+
+  /**
+   * throttle
+   * @param {Function} fn 
+   * @param {Number} delay 
+   * @returns {Function}
+   */
+  this.throttle = function(fn, delay) {
+    let timer = null;
+
+    return function() {
+      const context = this;
+      const args = arguments;
+
+      if (timer) return;
+
+      timer = setTimeout(() => {
+        fn.apply(context, args);
+        timer = null;
+      }, delay);
+    }
+  };
 }
 
 const myLodash = new MyLodash();
